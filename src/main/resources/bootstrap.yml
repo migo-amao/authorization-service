@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: authorization-service
+  cloud:
+    bus:
+      enabled: false
+    config:
+      enabled: false
+
+eureka:
+  client:
+    enabled: false
+
+---
+
+spring:
+  profiles: config
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URI:http://localhost:9000}
+      enabled: true
+    bus:
+      enabled: true
+
+---
+
+spring:
+  profiles: registry
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    enabled: true
+  instance:
+    preferIpAddress: true
+    hostname: ${HOST_NAME:localhost}
