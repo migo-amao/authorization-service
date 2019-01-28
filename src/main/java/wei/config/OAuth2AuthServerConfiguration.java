@@ -53,6 +53,7 @@ public class OAuth2AuthServerConfiguration extends AuthorizationServerConfigurer
                 .authorizedGrantTypes("authorization_code", "refresh_token", "password")
                 .scopes("read")
                 .autoApprove(true)
+                .redirectUris("http://localhost:8180/edge-service/login")
                 .and()
                 .withClient("order-service")
                 .secret("{noop}secret")
