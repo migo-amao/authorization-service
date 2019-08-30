@@ -17,7 +17,7 @@ spring:
   profiles: config
   cloud:
     config:
-      uri: ${CONFIG_SERVER_URI:http://localhost:8900}
+      uri: ${CONFIG_SERVER_URI:http://localhost:9100}
       enabled: true
     bus:
       enabled: true
