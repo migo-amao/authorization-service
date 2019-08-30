@@ -1,7 +1,7 @@
 pipeline {
     agent { //here we select only docker build agents
         docker {
-            image 'maven-docker-agent:1'
+            image 'maven-docker-agent:latest'
             //label 'maven-docker-agent'
             //args '-v $HOME/.m2:/root/.m2' //here you can map local maven repo, this let you to reuse local artifacts
             //args '-v /var/run/docker.sock:/var/run/docker.sock'
@@ -54,7 +54,7 @@ pipeline {
         stage('Deploy') {
 
             steps {
-                sh "docker run --name auth-service -p 8000:8000 auth-service-${BUILD_NUMBER}"
+                sh "docker run --rm --name auth-service -p 8000:8000 auth-service-${BUILD_NUMBER}"
             }
         }
     }
