@@ -54,7 +54,7 @@ pipeline {
         stage('Deploy') {
 
             steps {
-                sh "docker run --rm --name auth-service -p 8000:8000 auth-service-${BUILD_NUMBER}"
+                sh "docker run -d --rm --name auth-service-${BUILD_NUMBER} -p 8000:8000 auth-service-${BUILD_NUMBER}"
             }
         }
     }
