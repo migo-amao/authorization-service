@@ -1,12 +1,14 @@
 pipeline {
-    agent { //here we select only docker build agents
-        docker {
-            image 'maven-docker-agent:latest'
+    agent any
+
+    //{ //here we select only docker build agents
+        //docker {
+            //image 'maven-docker-agent:latest'
             //label 'maven-docker-agent'
             //args '-v $HOME/.m2:/root/.m2' //here you can map local maven repo, this let you to reuse local artifacts
             //args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+        //}
+    //}
 
     options {
         skipStagesAfterUnstable()
