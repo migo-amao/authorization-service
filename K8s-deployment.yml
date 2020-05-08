@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authorization-service-deployment
+spec:
+  selector:
+    matchLabels:
+      app: authorization-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: authorization-service
+    spec:
+      containers:
+        - name: authorization-service
+          image: authorization-service:latest
+          ports:
+            - containerPort: 8000

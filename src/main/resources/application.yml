@@ -1,3 +1,32 @@
 server:
   port: 8000
   servlet.context-path: /authorization-service
+
+#security:
+#  oauth2:
+#    client:
+#      client-id: edge-service
+#      client-secret: secret
+#      #authorized-grant-types: ["authorization_code", "client_credentials", "refresh_token"]
+#      scope: ["read", "write"]
+#      auto-approve-scopes: ["read", "write"]
+#      registered-redirect-uri:
+#        - "http://localhost:8180/edge-service/login/oauth2/code/api-gateway"
+#    authorization:
+#      token-key-access: permitAll()
+
+spring:
+  datasource:
+    url: "jdbc:h2:mem:testdb"
+    driverClassName: org.h2.Driver
+    username: sa
+
+  jpa.database-platform: org.hibernate.dialect.H2Dialect
+
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
+#      settings:
+#        trace: true
+#        web-allow-others: true
