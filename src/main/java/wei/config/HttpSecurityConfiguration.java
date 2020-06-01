@@ -41,11 +41,15 @@ import java.security.KeyPairGenerator;
 @EnableWebSecurity
 public class HttpSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    /*@Override
+    @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.requestMatchers().mvcMatchers("/", "/h2-console/*").and().authorizeRequests()
-                .antMatchers("/", "/h2-console/**").permitAll().anyRequest().authenticated();
-    }*/
+        httpSecurity
+                .authorizeRequests()
+                .antMatchers("/h2/**", "/h2-console/**", "/.well-known/jwks.json")
+                .permitAll()
+                .anyRequest()
+                .authenticated();
+    }
 
     @Override
     @Bean(name = BeanIds.AUTHENTICATION_MANAGER)

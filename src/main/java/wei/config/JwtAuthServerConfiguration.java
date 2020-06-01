@@ -58,6 +58,9 @@ public class JwtAuthServerConfiguration extends AuthorizationServerConfigurerAda
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public JwtAuthServerConfiguration(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         //this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
     }
@@ -67,7 +70,8 @@ public class JwtAuthServerConfiguration extends AuthorizationServerConfigurerAda
         oauthServer
                 .tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()")
-                .passwordEncoder(new BCryptPasswordEncoder(4));
+                //.passwordEncoder(new BCryptPasswordEncoder(4));
+                .passwordEncoder(this.passwordEncoder);
     }
 
     @Override

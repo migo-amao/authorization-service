@@ -7,18 +7,16 @@ INSERT INTO users (username,password,enabled)
 INSERT INTO users (username,password,enabled)
     VALUES ('kelly','$2a$04$IpZnGqXXgNvvMbqlg/tc7uJUM.1nj/5KtqnFlxRpRN2RqWUFV4lg6', TRUE);
 
-INSERT INTO authorities (username, authority) VALUES ('john', 'INVENTORY_VIEW');
-INSERT INTO authorities (username, authority) VALUES ('john', 'INVENTORY_ADD');
-INSERT INTO authorities (username, authority) VALUES ('kelly', 'INVENTORY_VIEW');
+INSERT INTO authorities (username, authority) VALUES ('john', 'ORDER_READ');
+INSERT INTO authorities (username, authority) VALUES ('john', 'ORDER_CREATE');
+INSERT INTO authorities (username, authority) VALUES ('kelly', 'ORDER_READ');
 
 INSERT INTO groups (id, group_name) VALUES (1, 'INVENTORY_GROUP_1');
 INSERT INTO groups (id, group_name) VALUES (2, 'INVENTORY_GROUP_2');
 
-INSERT INTO group_authorities (group_id, authority) VALUES (1, 'INVENTORY_VIEW');
-INSERT INTO group_authorities (group_id, authority) VALUES (1, 'INVENTORY_ADD');
-INSERT INTO group_authorities (group_id, authority) VALUES (1, 'ROLE_USER');
-INSERT INTO group_authorities (group_id, authority) VALUES (2, 'ROLE_USER');
-INSERT INTO group_authorities (group_id, authority) VALUES (2, 'INVENTORY_VIEW');
+INSERT INTO group_authorities (group_id, authority) VALUES (1, 'ORDER_READ');
+INSERT INTO group_authorities (group_id, authority) VALUES (1, 'ORDER_CREATE');
+INSERT INTO group_authorities (group_id, authority) VALUES (2, 'ORDER_READ');
 
 
 INSERT INTO group_members (username, group_id) VALUES ('john', 1);
