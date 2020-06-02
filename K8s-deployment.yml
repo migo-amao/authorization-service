@@ -1,44 +1,55 @@
 apiVersion: v1
+kind: Secret
+metadata:
+  name: nginx-proxy-secret
+data:
+  nginx.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURFRENDQWZnQ0NRQ2dZTDhEMVhnN2ZUQU5CZ2txaGtpRzl3MEJBUXNGQURCS01Rc3dDUVlEVlFRR0V3SlYKVXpFTE1Ba0dBMVVFQ0F3Q1ZGZ3hEekFOQmdOVkJBY01Ca1JoYkd4aGN6RVFNQTRHQTFVRUNnd0hVMlZoY0dsdQpaVEVMTUFrR0ExVUVDd3dDU1ZRd0hoY05NakF3TmpBeU1UUTBNREF5V2hjTk1qRXdOakF5TVRRME1EQXlXakJLCk1Rc3dDUVlEVlFRR0V3SlZVekVMTUFrR0ExVUVDQXdDVkZneER6QU5CZ05WQkFjTUJrUmhiR3hoY3pFUU1BNEcKQTFVRUNnd0hVMlZoY0dsdVpURUxNQWtHQTFVRUN3d0NTVlF3Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQgpEd0F3Z2dFS0FvSUJBUURocGg4d2xoM0hTQzloc2xuUElsYXBwYW1jd3h3SFNRQjFmYktqWGtQa210WEJUVVpmCmJTdjI1N0NxWkdxdHpyb0VXTUd5NDVqSmVrQXl5RFFtYWp4TGsvbG5jdE9NWEk5UTB4dDBINXk5LzBtM1JBV2gKZ0tRNzRpOGFDS0MwYW8yME5HN2J1bmlnTy9WSlNrZ3U4UjNhLzBVYUpHWnhpM0U1TWR0NXIwcW11OWNrNW0yUQpIUldqSDVjR2c1aERRN3hMTHgveXg5bUd0bXA3UUorTXR4SUtIR21lL1hmckVzZWg2Z2txV2drWnFldm9oOEE4Ck9qQ3RydjVXcVpuSm12YVVRWG43bHFPRE1FNDZ1TTZJWHhNandjZEdrL2xUNnlNc0xPdTZjTWtRNDM1YnZYVnQKZXhnYlNpMk9IcWFpL0pzS2ZaVFFxVmlaalZSUmVla01sRHhyQWdNQkFBRXdEUVlKS29aSWh2Y05BUUVMQlFBRApnZ0VCQUlGMjZMMDFlSHNBdlliL0tISFhIc3NPa3E4R3FrSkZrTnZldEF6YW9qVnpVdjFwMG5aYVVsNisvWVdHCkh0ZTAyeTAxZkF4TzRWeUp5aXdkWW9hakZPYjZjK2ttWnR2SSthYnA2bHdUemJGT0VldkRWSkUyT3hyN0lSWDgKZWp6Ujd5UW4xQUQ1d3dvUldwZ0VDRHBHcjNlS2ttb3U5WHN0N0RORGZwR0wzVWk4U0lzTGI1am1DendKajJabQpBY2l5Z04rZm5LNEU5REc2WnJILzNaVDVKejlHY3RnMU9zVDR1aGIzZGJlTzhDblB5YkNqcUFDMG1iOUtLWnl0CkFWUGNET1paZHhYaDUwMGNNb2lNKy9MUEhpOWd1TGM3QlVDcUtlZ2VFSm9tSHNQZ0lUdzVkSmVjVWl5QnBhVGkKWlJ3czJPUnVhbC9RS3dHUXh3aDlKZDdDNXk0PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  nginx.key: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2UUlCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktjd2dnU2pBZ0VBQW9JQkFRRGhwaDh3bGgzSFNDOWgKc2xuUElsYXBwYW1jd3h3SFNRQjFmYktqWGtQa210WEJUVVpmYlN2MjU3Q3FaR3F0enJvRVdNR3k0NWpKZWtBeQp5RFFtYWp4TGsvbG5jdE9NWEk5UTB4dDBINXk5LzBtM1JBV2hnS1E3NGk4YUNLQzBhbzIwTkc3YnVuaWdPL1ZKClNrZ3U4UjNhLzBVYUpHWnhpM0U1TWR0NXIwcW11OWNrNW0yUUhSV2pINWNHZzVoRFE3eExMeC95eDltR3RtcDcKUUorTXR4SUtIR21lL1hmckVzZWg2Z2txV2drWnFldm9oOEE4T2pDdHJ2NVdxWm5KbXZhVVFYbjdscU9ETUU0Ngp1TTZJWHhNandjZEdrL2xUNnlNc0xPdTZjTWtRNDM1YnZYVnRleGdiU2kyT0hxYWkvSnNLZlpUUXFWaVpqVlJSCmVla01sRHhyQWdNQkFBRUNnZ0VBR01GMjdvZXBvTEZrc1YwMXlTbkZSRHR1amtwQml2TVJYOUo0aEwvVXh3SE4KcmJWaW9SbURGMFYzOWxtcDhvT1ptTng3ODdwUWl0b2tyTzJWK3hqd29JSU5mTEgyVDVIZ0QwZjUzUldTeHExNQpVdWZkamtoa3ZFVW1VYjdja3E2VitVMC9WRS95NS9Gc0NheGltdlBOQ0xlMHh4ZHpQY1hFbURmR0VtV08xUmZWCnoxRjdKUVBDYlArR3dQY1piRStxOVJpMGdLRFlDNEppcm9FOG14OGNkakphYzR4eVlrNk9sWFdKS1lpYm5LMjYKekhTS0p5OHVXZXhPbG1CdWRXM0F2U1dsREkrOVUxZmVkYzJ0N0MxcEloNGtjSzRFalVRYWVzdyszdTMyYm8wawpwNVF6cDZwOXcvU0YzOGxGdUNrUzFTOTRTL0pKYjVLQUVVcXVJWVVPb1FLQmdRRDVJTWFMa0E5bElhM1QzbU9ECmMrVXFyN2I5eVpiNnBzQ1pJMmtUWmFMNVR6TklPQWtHRnVqQ2dpQ1J4aWdBekY3ajd3MklncThZeE5ONXMzUmMKMDdIMS9GL3E2VnRaRW9lOWM3b3hzM0Q5QkpneFkwTldzR0oyTmMvb1BXak5DL1Z4NU01Tm1KQkpHTE5UTHI2egoxM0VCUmFRbWgrRjVialBGRmp0R1NWNlYrUUtCZ1FEbjM0dy9lemJ3bzQ1QlVza01mOXcxazZYdmplZTJ4V0l4ClRYSys2YUpqbUxOcVFPV1FiQmZDTDZtZEJmNG1sM0kzRytVNWc4MncrTWo4UHZxc2V2NkFkRlZwRytOWnRqQW8KQ2YrTVVPNHVvbi9mUnJVMkVhd2xzOVBOd1JRS3E1T1JyRDF4VXowVGtjaEhZbE1sOGErR3Z5UktmSWVYVXMxdQpWdjF0ajhEdWd3S0JnR0IvTW9pU2gzUUx4SklCWFJob3hzWnZBM2x3SVR2N1pUU3NBNkpReHZ5OGtjZVNkT1JYCjhWYU9JdUYwR01DZWFNN3ZKSlhRME5QT1FYK3RaQkFrcTVUMWFZM0xUK2ZEaHJKNlpnK2tTc3FtZ2ZEM1d2ajAKSDE5Y1hxaTlTSi9MMXdtRHIrbGNnOTdjWTNGLzlMd2lZaEkxRUcwZ1N0VEhPK1JHUlRWbmEreTVBb0dCQUtyRApsdDBWbURPR3NIaHBTSWw5REtja2NydEdyZFNMN3pIU0VPU0syYjR4c2toWlBQZXNzNTZlVFhMSC9CRmR6WTdLCmEzbDlHUm54VHN0K2NreGVWRm96MHNjUzg4K1kva1F1Z05aTXIrMEdYZGdJa2VJZEI4UEllUDc1NkJHbnBJbE8KNlAweHlUUkZVOU5HbFdmSFkzYUFCSEVhM3h6UnJWdEtrMStCMUJ1VEFvR0FYTmlpZ2JGRlBXUTZOZDlxbjB5MwpuSVZrNld3bWNyb0c2RU9QUzczRDhWTmlBelhMbkNheGlhNEx2NVV0cVU5TnJocmF0bVl2dXlpRXZLMFVrU3c1Ci9ITkM3Rk5QbXJtUHJLSTFOa1k4cEZLUkhjVzFWM0ZubHZxcmUzMmVidktNSEUzZGd2aVZoRXJML01ZZXQ3NzkKd3hkQUgvQk4zUktFdzg5dittaHJtVjA9Ci0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K
+---
+apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: auth-svc-nginx-config-map
+  name: nginx-proxy-config-map
 data:
   nginx.conf: |-
-    user  nginx;
     worker_processes  2;
 
-    error_log  /var/log/nginx/error.log warn;
+    error_log  /var/log/nginx/error.log;
     pid        /var/run/nginx.pid;
 
     events {
-        worker_connections  1024;
+      worker_connections  1024;
     }
 
     http {
-        include       /etc/nginx/mime.types;
-        default_type  application/octet-stream;
+      include       /etc/nginx/mime.types;
+      default_type  application/octet-stream;
 
-        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                          '$status $body_bytes_sent "$http_referer" '
-                          '"$http_user_agent" "$http_x_forwarded_for"';
+      log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                        '$status $body_bytes_sent "$http_referer" '
+                        '"$http_user_agent" "$http_x_forwarded_for"';
 
-        access_log  /var/log/nginx/access.log  main;
+      access_log  /var/log/nginx/access.log  main;
 
-        sendfile        on;
-        keepalive_timeout  65;
+      sendfile           on;
+      keepalive_timeout  65;
 
-        upstream authorization-service {
-            server 127.0.0.1:8000;
+      server {
+        listen 80;
+        listen 443 ssl;
+
+        server_name localhost;
+        ssl_certificate /etc/nginx/ssl/nginx.crt;
+        ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
+        ssl_session_cache shared:SSL:1m;
+        ssl_session_timeout 60m;
+
+        location / {
+          proxy_pass         http://localhost:8000;
+          proxy_redirect     off;
         }
-
-        server {
-            listen 80;
-
-            location / {
-                proxy_pass         http://authorization-service;
-                proxy_redirect     off;
-            }
-        }
+      }
     }
 ---
 apiVersion: v1
@@ -52,8 +63,12 @@ spec:
   ports:
     - name: http
       protocol: TCP
-      port: 80
+      port: 8080
       targetPort: 80
+    - name: https
+      protocol: TCP
+      port: 8443
+      targetPort: 443
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -72,16 +87,22 @@ spec:
       volumes:
         - name: nginx-config-volume
           configMap:
-            name: auth-svc-nginx-config-map
+            name: nginx-proxy-config-map
+        - name: nginx-secret-volume
+          secret:
+            secretName: nginx-proxy-secret
       containers:
         - name: authorization-service
           image: authorization-service:latest
           imagePullPolicy: Never
         - name: nginx
-          image: nginx:alpine
+          image: nginx
           ports:
             - containerPort: 80
+            - containerPort: 443
           volumeMounts:
             - name: nginx-config-volume
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
+            - name: nginx-secret-volume
+              mountPath: /etc/nginx/ssl
