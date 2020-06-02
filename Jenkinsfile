@@ -48,8 +48,22 @@ pipeline {
 
             steps {
                 //sh "docker run -d --rm --name auth-service-${BUILD_NUMBER} -p 8000:8000 authorization-service:latest"
-                sh "kubectl delete deployment auth-svc-deployment"
-                sh "kubectl delete service auth-svc-service"
+                script {
+                    try {
+                        sh "kubectl delete deployment auth-svc-deployment"
+                    } catch (err) {
+                        echo err.getMessage()
+                    }
+                }
+
+                script {
+                    try {
+                        sh "kubectl delete service auth-svc-service"
+                    } catch (err) {
+                        echo err.getMessage()
+                    }
+                }
+
                 sh "kubectl apply -f k8s-deployment.yml"
             }
         }
