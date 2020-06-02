@@ -47,7 +47,10 @@ pipeline {
         stage('Deploy') {
 
             steps {
-                sh "docker run -d --rm --name auth-service-${BUILD_NUMBER} -p 8000:8000 authorization-service:latest"
+                //sh "docker run -d --rm --name auth-service-${BUILD_NUMBER} -p 8000:8000 authorization-service:latest"
+                sh "kubectl delete deployment auth-svc-deployment"
+                sh "kubectl delete service auth-svc-service"
+                sh "kubectl apply -f k8s-deployment.yml"
             }
         }
     }
