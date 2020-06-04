@@ -42,7 +42,7 @@ spec:
           image: authorization-service:latest
           imagePullPolicy: Never
         - name: nginx
-          image: nginx
+          image: nginx:alpine
           ports:
             - containerPort: 80
             - containerPort: 443
